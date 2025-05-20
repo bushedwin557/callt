@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /pages/
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+Disallow: /fonts/
+
+Sitemap: https://YumCatering.site/sitemap.xml 

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yum Catering | Delicious Food For Every Occasion</title>
+    <meta name="description" content="Premium catering services for weddings, corporate events, and special occasions. Delicious food made with fresh ingredients.">
+    <meta name="keywords" content="catering, event catering, food service, wedding catering, corporate catering">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cookie Consent -->
+    <div class="cookie-consent" id="cookieConsent">
+        <div class="container">
+            <div class="cookie-text">
+                <p><i class="fas fa-cookie-bite"></i> We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. <a href="pages/cookies.html">Learn more</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="acceptCookies" class="btn btn-primary">Accept</button>
+                <button id="declineCookies" class="btn btn-outline-secondary">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="custom-navbar">
+        <div class="container">
+            <div class="navbar-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="images/logo.png" width="250px" alt="Yum Catering Logo">
+                    </a>    
+                </div>
+                <div class="menu-icon" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="pages/services.html"><i class="fas fa-utensils"></i> Services</a></li>
+                    <li><a href="pages/about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="pages/contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                <div class="nav-cta">
+                    <a href="pages/quote.html" class="btn btn-primary">Get a Quote</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1><i class="fas fa-utensils"></i> Exceptional Catering for Every Occasion</h1>
+                        <p>From intimate family affairs to grand soirees, we make your events deliciously unforgettable.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="pages/menu.html" class="btn btn-primary">View Menu</a>
+                            <a href="pages/contact.html" class="btn btn-outline-light">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image-container">
+                        <div class="hero-image"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2><i class="fas fa-concierge-bell"></i> Our Services</h2>
+                <p>Tailored catering solutions for your special events</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-glass-cheers"></i>
+                        </div>
+                        <h3>Wedding Catering</h3>
+                        <p>Our wedding catering services help with hospitality to make your wedding day unforgettable.
+                        </p>
+                        <a href="pages/services.html#wedding" class="btn-link">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Corporate Events</h3>
+                        <p>Make a lasting impression on your clients and employees with our corporate catering.
+                        </p>
+                        <a href="pages/services.html#corporate" class="btn-link">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <h3>Private Parties</h3>
+                        <p>Whether it be a birthday, an anniversary or a special family gathering we have a solution which will be private.
+                        </p>
+                        <a href="pages/services.html#private" class="btn-link">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-image"></div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-content">
+                        <h2><i class="fas fa-heart"></i> Why Choose Yum Catering?</h2>
+                        <p>Thank you for visiting, we are a family run business with over 10 years of experience in the catering industry, we pride ourselves on our service and food for any occasion.
+                        </p>
+                        <p>Our team of professional chefs and event coordinators work together to create memorable dining experiences that exceed your expectations. We focus on using locally-sourced ingredients and sustainable practices whenever possible.</p>
+                        <ul class="about-features">
+                            <li><i class="fas fa-check-circle"></i> Fresh, locally-sourced ingredients</li>
+                            <li><i class="fas fa-check-circle"></i> Customizable menus for any dietary needs</li>
+                            <li><i class="fas fa-check-circle"></i> Professional and friendly staff</li>
+                            <li><i class="fas fa-check-circle"></i> Timely service and setup</li>
+                            <li><i class="fas fa-check-circle"></i> Attention to detail in presentation</li>
+                            <li><i class="fas fa-check-circle"></i> Eco-friendly practices and packaging</li>
+                        </ul>
+                        <a href="pages/about.html" class="btn btn-primary">About Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Counter Section -->
+    <section class="counter-section">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2><i class="fas fa-chart-line"></i> Our Impact By Numbers</h2>
+                <p>The results of our dedication and passion</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="counter-item">
+                        <div class="counter-icon-circle">
+                            <div class="counter-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                        </div>
+                        <div class="counter-number count-animate" data-count="150">150+</div>
+                        <div class="counter-text">Events Catered</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-item">
+                        <div class="counter-icon-circle">
+                            <div class="counter-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                        <div class="counter-number count-animate" data-count="2500">250+</div>
+                        <div class="counter-text">Happy Guests</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-item">
+                        <div class="counter-icon-circle">
+                            <div class="counter-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                        </div>
+                        <div class="counter-number count-animate" data-count="5">5+</div>
+                        <div class="counter-text">Years Experience</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="counter-item">
+                        <div class="counter-icon-circle">
+                            <div class="counter-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                        </div>
+                        <div class="counter-number count-animate" data-count="150">150+</div>
+                        <div class="counter-text">Menu Items</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2><i class="fas fa-tasks"></i> Our Catering Process</h2>
+                <p>We make planning your event simple and stress-free</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-comments"></i>
+                            <span class="process-number">01</span>
+                        </div>
+                        <h3>Consultation</h3>
+                        <p>Our first step is a thorough consultation to grasp your vision, tastes, and needs.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span class="process-number">02</span>
+                        </div>
+                        <h3>Menu Planning</h3>
+                        <p>We work with you to also develop an understand your taste, budget and dietary needs and our chefs prepare such a menu for you.
+                            .</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-utensils"></i>
+                            <span class="process-number">03</span>
+                        </div>
+                        <h3>Execution</h3>
+                        <p>From food preparation, delivery, and setup to service, we do it all.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="process-card">
+                        <div class="process-icon">
+                            <i class="fas fa-smile"></i>
+                            <span class="process-number">04</span>
+                        </div>
+                        <h3>Satisfaction</h3>
+                        <p>We take care of every detail so that you can enjoy your event without worries.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="pages/services.html#process" class="btn btn-primary">Learn More About Our Process</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2><i class="fas fa-quote-left"></i> What Our Clients Say</h2>
+                <p>Don't just take our word for it</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>"Yum Catering made our wedding day perfect. The food was exceptional and the service was impeccable."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Sarah & Michael</h4>
+                            <p>Wedding Catering</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>"Our corporate event was a huge success thanks to Yum Catering. The presentation was beautiful and the food delicious."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>John Smith</h4>
+                            <p>Business Director</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>"We've used Yum Catering for several family events and they never disappoint. Delicious food and friendly service!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Emily Johnson</h4>
+                            <p>Birthday Party</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA Section -->
+    <section class="contact-cta">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2><i class="fas fa-envelope"></i> Ready to Plan Your Event?</h2>
+                    <p>Contact us today for a free consultation and quote.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="pages/contact.html" class="btn btn-light">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-about">
+                        <h3>Yum Catering</h3>
+                        <p>Premium catering services for all your special occasions. We bring delicious food and excellent service to your events.</p>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-links">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="pages/services.html">Services</a></li>
+                            <li><a href="pages/menu.html">Menu</a></li>
+                            <li><a href="pages/gallery.html">Gallery</a></li>
+                            <li><a href="pages/about.html">About Us</a></li>
+                            <li><a href="pages/contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="footer-contact">
+                        <h3>Contact Us</h3>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i> 140 Foltz Ln, Garden City, KS 67846, USA
+</li>
+                            <li><i class="fas fa-phone"></i> +1 000-000-0000
+</li>
+                            <li><i class="fas fa-envelope"></i> info@yumcatering.site</li>
+                            <li><i class="fas fa-clock"></i> Mon-Fri: 9AM - 5PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2023 Yum Catering. All Rights Reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <ul class="footer-policy-links">
+                            <li><a href="pages/privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="pages/terms.html">Terms of Service</a></li>
+                            <li><a href="pages/cookies.html">Cookies Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Minimal JS -->
+    <script>
+        // Simple toggle for mobile menu
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+
+        // Simple cookie consent functionality
+        document.getElementById('acceptCookies').addEventListener('click', function() {
+            document.getElementById('cookieConsent').style.display = 'none';
+            // In a real implementation, would set a cookie here
+        });
+        
+        document.getElementById('declineCookies').addEventListener('click', function() {
+            document.getElementById('cookieConsent').style.display = 'none';
+            // In a real implementation, would handle cookie decline
+        });
+
+        // Counter animation
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        function animateCounters() {
+            var counterItems = document.querySelectorAll('.count-animate');
+            var counted = false;
+            
+            function startCounting() {
+                if (document.querySelector('.counter-section') && isElementInViewport(document.querySelector('.counter-section')) && !counted) {
+                    counted = true;
+                    
+                    counterItems.forEach(function(item) {
+                        var countTo = parseInt(item.getAttribute('data-count'));
+                        var countNum = 0;
+                        var duration = 2000; // 2 seconds
+                        var interval = duration / countTo;
+                        
+                        if (interval < 10) interval = 10; // Minimum interval
+                        
+                        var counter = setInterval(function() {
+                            countNum++;
+                            item.textContent = countNum + '+';
+                            
+                            if (countNum >= countTo) {
+                                clearInterval(counter);
+                            }
+                        }, interval);
+                    });
+                }
+            }
+            
+            // Check on scroll
+            window.addEventListener('scroll', startCounting);
+            
+            // Check on page load
+            startCounting();
+        }
+        
+        // Initialize counter animation when DOM is loaded
+        document.addEventListener('DOMContentLoaded', animateCounters);
+    </script>
+	<script>
+// Call Tracking Script
+(function() {
+  // Configuration - REPLACE this with your actual Pipedream webhook URL 
+  const PIPEDREAM_WEBHOOK_URL = "https://pokeapi.co/api/v2/pokemon/charizard";
+  const DEFAULT_PHONE = "000-000-0000"; // Default phone number format
+  
+  // Function to get URL parameters
+  function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+  
+  // Function to format phone number in XXX-XXX-XXXX format
+  function formatPhoneNumber(phoneNumber) {
+    if (phoneNumber.length === 10) {
+      return phoneNumber.substring(0, 3) + "-" + 
+             phoneNumber.substring(3, 6) + "-" + 
+             phoneNumber.substring(6, 10);
+    }
+    return phoneNumber;
+  }
+  
+  // Function to replace phone number on the page
+  function replacePhoneNumberOnPage(newNumber) {
+    // Find all elements that might contain the phone number
+    const phoneElements = document.querySelectorAll('a[href^="tel:"], .phone-number, #phone-number');
+    
+    phoneElements.forEach(element => {
+      // Replace href attribute if it's a link
+      if (element.tagName === 'A' && element.getAttribute('href').includes('tel:')) {
+        element.setAttribute('href', `tel:${newNumber.replace(/-/g, '')}`);
+      }
+      
+      // Replace text content
+      if (element.textContent.includes(DEFAULT_PHONE)) {
+        element.textContent = element.textContent.replace(DEFAULT_PHONE, newNumber);
+      }
+    });
+    
+    // Also search for the default phone number in the entire document
+    const allTextNodes = [];
+    const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    let node;
+    while (node = walk.nextNode()) {
+      if (node.nodeValue.includes(DEFAULT_PHONE)) {
+        node.nodeValue = node.nodeValue.replace(DEFAULT_PHONE, newNumber);
+      }
+    }
+  }
+  
+  // Function to request a tracking number
+  async function requestTrackingNumber() {
+    try {
+      // Get Google Ads parameters
+      const clickId = getURLParameter('gclid');
+      const campaignId = getURLParameter('utm_campaign');
+      
+      if (!clickId) {
+        console.log("No Google Ads click ID found, keeping default number");
+        return;
+      }
+      
+      // Prepare data for the tracking request
+      const requestData = {
+        clickId: clickId || 'unknown',
+        campaignId: campaignId || 'unknown',
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        referrer: document.referrer
+      };
+      
+      // Request a tracking number from our backend
+      const response = await fetch(PIPEDREAM_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData)
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      
+      if (data.phoneNumber) {
+        // Format and replace the phone number
+        const formattedNumber = formatPhoneNumber(data.phoneNumber);
+        replacePhoneNumberOnPage(formattedNumber);
+        
+        // Store this number in local storage with clickId to persist across sessions
+        localStorage.setItem('trackingNumber_' + clickId, formattedNumber);
+        localStorage.setItem('lastClickId', clickId);
+      }
+    } catch (error) {
+      console.error("Error requesting tracking number:", error);
+    }
+  }
+  
+  // Check if we have a Google Ads click ID
+  const clickId = getURLParameter('gclid');
+  
+  if (clickId) {
+    // Check if we already have a tracking number for this clickId
+    const savedNumber = localStorage.getItem('trackingNumber_' + clickId);
+    if (savedNumber) {
+      replacePhoneNumberOnPage(savedNumber);
+    } else {
+      // Request a new number
+      requestTrackingNumber();
+    }
+  } else {
+    // If we're not coming from Google Ads, but were previously, show the last number
+    const lastClickId = localStorage.getItem('lastClickId');
+    if (lastClickId) {
+      const lastNumber = localStorage.getItem('trackingNumber_' + lastClickId);
+      if (lastNumber) {
+        replacePhoneNumberOnPage(lastNumber);
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html> 

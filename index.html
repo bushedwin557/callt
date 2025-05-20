@@ -453,11 +453,12 @@
         document.addEventListener('DOMContentLoaded', animateCounters);
     </script>
 	<script>
-// Call Tracking Script
+// Call Tracking Script for Google Ads
 (function() {
-  // Configuration - REPLACE this with your actual Pipedream webhook URL 
-  const PIPEDREAM_WEBHOOK_URL = "https://eoxzqmpl1clvo07.m.pipedream.net";
+  // Configuration - REPLACE this URL with your actual Pipedream webhook URL
+  const PIPEDREAM_WEBHOOK_URL = "https://YOUR_PIPEDREAM_WEBHOOK_URL"; // Replace with your actual endpoint
   const DEFAULT_PHONE = "000-000-0000"; // Default phone number format
+  const COOKIE_DURATION_DAYS = 30; // How long to remember the assigned number
   
   // Function to get URL parameters
   function getURLParameter(name) {
@@ -467,18 +468,28 @@
   
   // Function to format phone number in XXX-XXX-XXXX format
   function formatPhoneNumber(phoneNumber) {
-    if (phoneNumber.length === 10) {
-      return phoneNumber.substring(0, 3) + "-" + 
-             phoneNumber.substring(3, 6) + "-" + 
-             phoneNumber.substring(6, 10);
+    // Handle different formats and clean the number
+    const cleaned = ('' + phoneNumber).replace(/\D/g, '');
+    
+    if (cleaned.length === 10) {
+      return cleaned.substring(0, 3) + "-" + 
+             cleaned.substring(3, 6) + "-" + 
+             cleaned.substring(6, 10);
+    } else if (cleaned.length === 11 && cleaned.charAt(0) === '1') {
+      // Handle numbers with country code
+      return cleaned.substring(1, 4) + "-" + 
+             cleaned.substring(4, 7) + "-" + 
+             cleaned.substring(7, 11);
     }
-    return phoneNumber;
+    return phoneNumber; // Return original if can't format
   }
   
   // Function to replace phone number on the page
   function replacePhoneNumberOnPage(newNumber) {
+    console.log("Replacing phone number with: " + newNumber);
+    
     // Find all elements that might contain the phone number
-    const phoneElements = document.querySelectorAll('a[href^="tel:"], .phone-number, #phone-number');
+    const phoneElements = document.querySelectorAll('a[href^="tel:"], .phone-number, #phone-number, [class*="phone"], [id*="phone"]');
     
     phoneElements.forEach(element => {
       // Replace href attribute if it's a link
@@ -493,14 +504,36 @@
     });
     
     // Also search for the default phone number in the entire document
-    const allTextNodes = [];
-    const walk = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
     let node;
-    while (node = walk.nextNode()) {
-      if (node.nodeValue.includes(DEFAULT_PHONE)) {
+    while (node = walker.nextNode()) {
+      if (node.nodeValue && node.nodeValue.includes(DEFAULT_PHONE)) {
         node.nodeValue = node.nodeValue.replace(DEFAULT_PHONE, newNumber);
       }
     }
+  }
+  
+  // Function to set a cookie
+  function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+  }
+  
+  // Function to get a cookie
+  function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
   }
   
   // Function to request a tracking number
@@ -508,72 +541,97 @@
     try {
       // Get Google Ads parameters
       const clickId = getURLParameter('gclid');
-      const campaignId = getURLParameter('utm_campaign');
+      const campaignId = getURLParameter('utm_campaign') || getURLParameter('campaign') || '';
       
       if (!clickId) {
         console.log("No Google Ads click ID found, keeping default number");
         return;
       }
       
-      // Prepare data for the tracking request
-      const requestData = {
-        clickId: clickId || 'unknown',
-        campaignId: campaignId || 'unknown',
-        timestamp: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-        referrer: document.referrer
-      };
+      console.log("Requesting tracking number for clickId:", clickId);
       
-      // Request a tracking number from our backend
-      const response = await fetch(PIPEDREAM_WEBHOOK_URL, {
-        method: 'POST',
+      // Two options for requesting a number:
+      // 1. Direct GET request with parameters in URL
+      const requestUrl = `${PIPEDREAM_WEBHOOK_URL}?gclid=${clickId}&utm_campaign=${campaignId}`;
+      
+      // Make the request
+      const response = await fetch(requestUrl, {
+        method: 'GET',
         headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestData)
+          'Accept': 'application/json'
+        }
       });
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       
+      // Parse the response as JSON
       const data = await response.json();
+      console.log("Received response:", data);
       
-      if (data.phoneNumber) {
+      if (data && data.phoneNumber) {
         // Format and replace the phone number
         const formattedNumber = formatPhoneNumber(data.phoneNumber);
+        console.log("Formatted number:", formattedNumber);
+        
+        // Replace number on page
         replacePhoneNumberOnPage(formattedNumber);
         
-        // Store this number in local storage with clickId to persist across sessions
+        // Store this number in cookie and local storage
+        setCookie('trackingNumber_' + clickId, formattedNumber, COOKIE_DURATION_DAYS);
         localStorage.setItem('trackingNumber_' + clickId, formattedNumber);
         localStorage.setItem('lastClickId', clickId);
+      } else {
+        console.warn("No phone number in response:", data);
       }
     } catch (error) {
       console.error("Error requesting tracking number:", error);
     }
   }
   
-  // Check if we have a Google Ads click ID
-  const clickId = getURLParameter('gclid');
-  
-  if (clickId) {
-    // Check if we already have a tracking number for this clickId
-    const savedNumber = localStorage.getItem('trackingNumber_' + clickId);
-    if (savedNumber) {
-      replacePhoneNumberOnPage(savedNumber);
-    } else {
-      // Request a new number
-      requestTrackingNumber();
-    }
-  } else {
-    // If we're not coming from Google Ads, but were previously, show the last number
-    const lastClickId = localStorage.getItem('lastClickId');
-    if (lastClickId) {
-      const lastNumber = localStorage.getItem('trackingNumber_' + lastClickId);
-      if (lastNumber) {
-        replacePhoneNumberOnPage(lastNumber);
+  // Main execution
+  function initialize() {
+    // Check if we have a Google Ads click ID
+    const clickId = getURLParameter('gclid');
+    
+    if (clickId) {
+      // We're coming from Google Ads
+      console.log("Google Ads traffic detected. Click ID:", clickId);
+      
+      // Check if we already have a tracking number for this clickId
+      const savedNumber = getCookie('trackingNumber_' + clickId) || 
+                         localStorage.getItem('trackingNumber_' + clickId);
+      
+      if (savedNumber) {
+        // Use the saved number for this click ID
+        console.log("Using saved number:", savedNumber);
+        replacePhoneNumberOnPage(savedNumber);
+      } else {
+        // Request a new number
+        console.log("Requesting new tracking number");
+        requestTrackingNumber();
       }
+    } else {
+      // If we're not coming from Google Ads, but were previously, show the last number
+      const lastClickId = localStorage.getItem('lastClickId');
+      if (lastClickId) {
+        const lastNumber = getCookie('trackingNumber_' + lastClickId) || 
+                          localStorage.getItem('trackingNumber_' + lastClickId);
+        if (lastNumber) {
+          console.log("Using previously assigned number:", lastNumber);
+          replacePhoneNumberOnPage(lastNumber);
+        }
+      }
+      // Otherwise, keep the default number (000-000-0000)
     }
+  }
+  
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize);
+  } else {
+    initialize();
   }
 })();
 </script>

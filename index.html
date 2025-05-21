@@ -455,7 +455,7 @@
 <script>
     (function() {
         const defaultPhoneNumber = '000-000-0000';
-        const cloudFunctionUrl = 'https://us-central1-centering-chess-460414-a4.cloudfunctions.net/getDynamicPhoneNumber'; // Your deployed Cloud Function URL
+        const dynamicPhoneNumberApiUrl = '/api/dynamic-number'; // New Vercel Serverless Function URL
 
         function isGoogleAdsTraffic() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -475,7 +475,7 @@
                 const campaignId = urlParams.get('utm_campaign') || 'N/A'; // Example for Campaign ID
 
                 try {
-                    const response = await fetch(cloudFunctionUrl, {
+                    const response = await fetch(dynamicPhoneNumberApiUrl, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -503,7 +503,9 @@
             }
         }
 
-        getAndReplacePhoneNumber();
+        // Delay execution slightly to ensure DOM is ready, though body.innerHTML replacement doesn't strictly require it.
+        // For more complex DOM manipulation, consider 'DOMContentLoaded' event listener.
+        setTimeout(getAndReplacePhoneNumber, 0);
     })();
 </script>
 </body>

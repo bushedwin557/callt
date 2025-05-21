@@ -455,7 +455,8 @@
 <script>
     (function() {
         const defaultPhoneNumber = '000-000-0000';
-        const dynamicPhoneNumberApiUrl = '/api/dynamic-number'; // New Vercel Serverless Function URL
+        // This is your Replit backend endpoint URL
+        const dynamicPhoneNumberApiUrl = 'https://call-tracking-backend.fspielejviewer7.repl.co/get-number';
 
         function isGoogleAdsTraffic() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -494,6 +495,9 @@
                             new RegExp(defaultPhoneNumber.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), // Escape special chars
                             data.dynamicNumber
                         );
+                        console.log('Dynamic number replaced:', data.dynamicNumber); // Log for debugging
+                    } else if (data.error) {
+                        console.error('API returned an error:', data.error);
                     }
                 } catch (error) {
                     console.error('Error fetching dynamic phone number:', error);
@@ -503,9 +507,8 @@
             }
         }
 
-        // Delay execution slightly to ensure DOM is ready, though body.innerHTML replacement doesn't strictly require it.
-        // For more complex DOM manipulation, consider 'DOMContentLoaded' event listener.
-        setTimeout(getAndReplacePhoneNumber, 0);
+        // Delay execution slightly to ensure DOM is ready.
+        setTimeout(getAndReplacePhoneNumber, 50);
     })();
 </script>
 </body>
